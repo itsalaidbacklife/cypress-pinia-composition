@@ -1,8 +1,12 @@
-// https://docs.cypress.io/api/introduction/api.html
+
 
 describe('My First Test', () => {
-  it('visits the app root url', () => {
-    cy.visit('/')
-    cy.contains('h1', 'You did it!')
-  })
+  beforeEach(() => {
+    cy.visit('/');
+  });
+  it('Reads the DOM', () => {
+    cy.get('[data-cy=count]').contains('The count is 0');
+    cy.get('[data-cy=increment]').click();
+    cy.get('[data-cy=count]').contains('The count is 1');
+  });
 })

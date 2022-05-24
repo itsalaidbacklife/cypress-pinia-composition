@@ -4,13 +4,12 @@
   </header>
 
   <main>
-    <p>The count is {{ counterStore.counter }}</p>
-    <button @click="counterStore.increment">Increment counter</button>
+    <p data-cy="count">The count is {{ counterStore.counter }}</p>
+    <button data-cy="increment" @click="counterStore.increment">Increment counter</button>
   </main>
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useCounterStore } from '@/stores/counter.js';
 
 const counterStore = useCounterStore();
