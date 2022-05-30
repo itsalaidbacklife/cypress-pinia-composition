@@ -16,19 +16,15 @@ describe('Testing pinia stores', () => {
     // Get the pinia store directly off the window object
     cy
       .window()
-      .its('counterStore')
-      .then((counterStore) => {
-        expect(counterStore.counter).to.eq(0);
-      });
+      .its('counterStore.counter')
+      .should('equal', 0);
       // Click the increment button
       cy.get('[data-cy=increment]').click();
       // Re-check store and it should now be incremented
       cy
       .window()
-      .its('counterStore')
-      .then((counterStore) => {
-        expect(counterStore.counter).to.eq(1);
-      });
+      .its('counterStore.counter')
+      .should('equal', 1);
   });
 
   // This fails -- can't use `useCounterStore()` without a global pinia
