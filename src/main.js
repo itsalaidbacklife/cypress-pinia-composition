@@ -1,14 +1,17 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
+import { useCounterStore } from '@/stores/counter';
 
 const app = createApp(App)
+export const piniaInstance = createPinia()
 
-app.use(createPinia())
+app.use(piniaInstance)
 
 app.mount('#app')
 
-// Expose app to window during testing
+// Expose a store to window during testing
 if (window.Cypress) {
-    window.app = app;
+    const counterStore = useCounterStore();
+    window.counterStore = counterStore;
 }
