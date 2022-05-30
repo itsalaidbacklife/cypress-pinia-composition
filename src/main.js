@@ -11,7 +11,7 @@ app.use(piniaInstance)
 app.mount('#app')
 
 // Expose a store to window during testing
-if (window.Cypress) {
+if (window.Cypress && process.env.NODE_ENV === 'development') {
     const counterStore = useCounterStore();
     window.counterStore = counterStore;
 }
